@@ -1,15 +1,12 @@
 import axios from 'axios';
-import { config } from 'dotenv';
-import { CREATE_PROJECT, GET_ALL_PROJECTS } from './utils/queries';
-
-config();
+import { GET_ALL_PROJECTS } from './utils/queries';
 
 const sendQuery = async (query: any, vars?: any) => {
   const { data } = await axios({
     url: 'https://graphql.fauna.com/graphql',
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${process.env.FAUNA_SECRET}`,
+      Authorization: `Bearer ${FAUNA_SECRET}`,
     },
     data: {
       query,
@@ -22,9 +19,9 @@ const sendQuery = async (query: any, vars?: any) => {
 
 export const getAllProjects = async () => {
   try {
-    const res = await sendQuery(GET_ALL_PROJECTS);
+    const { data } = await sendQuery(GET_ALL_PROJECTS);
 
-    return JSON.stringify(res);
+    return data.projects.data;
   } catch (error) {
     console.log('ERROR: ', error.message);
   }
