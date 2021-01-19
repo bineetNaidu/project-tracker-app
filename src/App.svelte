@@ -1,28 +1,14 @@
 <script lang="ts">
 </script>
 
-<main>
-  <h1>Hello Project Tracker App!</h1>
+<main class="container">
+  <h1 class="text-center font-semibold text-5xl text-purple-500">
+    Hello Project Tracker App!
+  </h1>
 </main>
 
-<style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-  }
+<style global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 </style>
