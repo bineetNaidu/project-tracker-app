@@ -51,7 +51,9 @@ export default {
       FAUNA_SECRET: JSON.stringify(process.env.FAUNA_SECRET),
     }),
     svelte({
-      preprocess: sveltePreprocess(),
+      preprocess: sveltePreprocess({
+        postcss: true,
+      }),
       compilerOptions: {
         // enable run-time checks when not in production
         dev: !production,
