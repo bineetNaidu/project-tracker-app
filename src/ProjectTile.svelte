@@ -6,37 +6,44 @@
   export let projectLiveUrl: string;
 </script>
 
-<div class="flex flex-col p-6">
-  <div class="flex justify-between">
-    <h3 class="flex items-center">
-      {#if completed}
-        <span class="circle bg-green-800" />
+<div class="flex flex-col bg-gray-100 min-w-max rounded-xl">
+  <div class="w-full flex justify-between p-4 items-center">
+    <div>
+      <h1>
+        {projectName}
+        {#if completed}
+          <span class="circle bg-green-500">Completed</span>
+        {:else}
+          <span class="circle bg-yellow-400"> Ongoing </span>
+        {/if}
+      </h1>
+      <p class="text-gray-500">
+        {projectDescription}
+      </p>
+    </div>
+    <div>
+      {#if projectGithubUrl}
+        <a href={projectGithubUrl}>Github</a>
       {:else}
-        <span class="circle bg-red-400" />
+        <p class="text-red-500">Not Github Link</p>
       {/if}
-
-      {projectName}
-    </h3>
-
-    <p>
-      <a disabled={!!projectLiveUrl} href={projectLiveUrl}>Visit Site</a>
-      <span> ⭐ </span>
-    </p>
+    </div>
   </div>
 
-  <div class="flex justify-evenly">
-    <a href={projectGithubUrl}>
-      {projectGithubUrl && projectGithubUrl.replace('https://github.com/', '')}
-    </a>
-
-    <p>
-      {projectDescription}
-    </p>
+  <div class="flex">
+    <button
+      class="flex-1 py-2 border-t border-r border-b-0 border-l-0 focus:outline-none"
+      >More Options</button
+    >
+    <button
+      class="flex-1 py-2 border-t border-l-0 border-b-0 border-r focus:outline-none">
+      <a href={projectLiveUrl} class="hover:no-underline">View Live</a>
+    </button>
   </div>
 </div>
 
 <style>
   .circle {
-    @apply w-6 h-6 rounded-full inline-block;
+    @apply px-2 py-1 text-xs rounded-full;
   }
 </style>
