@@ -4,18 +4,8 @@ type Project {
   completed: Boolean!
   projectGithubUrl: String
   projectLiveUrl: String
-  userId: User
-}
-
-type User {
-  name: String!
-  email: String!
-  avatar: String
-  password: String!
-  hobby: String
-  projects: [Project]
 }
 
 type Query {
-  projects: [Project!]!
+  projects: [Project!]
 }
