@@ -1,10 +1,9 @@
 <script lang="ts">
+  import Header from './Header.svelte';
 </script>
 
-<main class="container">
-  <h1 class="text-center font-semibold text-5xl text-purple-500">
-    Hello Project Tracker App!
-  </h1>
+<main class="container mx-auto">
+  <Header />
 </main>
 
 <style global>
