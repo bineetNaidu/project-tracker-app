@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
 
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "functions/faunaDB-client.ts"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"]
 }
