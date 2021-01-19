@@ -32,6 +32,7 @@
 
   <div class="flex">
     <button
+      on:click
       class="flex-1 py-2 border-t border-r border-b-0 border-l-0 focus:outline-none"
       >More Options</button
     >
