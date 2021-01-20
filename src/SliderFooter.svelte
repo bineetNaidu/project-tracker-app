@@ -2,13 +2,15 @@
   import DeleteActionModel from './deleteActionModel.svelte';
   import { deleteProject } from './functions/faunaDB-client';
   import ProjectStore from './store/ProjectStore';
+  import UpdateProjectModal from './UpdateProjectModal.svelte';
 
   export let _id: string;
 
-  let show: boolean = false;
+  let showDeleteModal: boolean = false;
+  let showUpdateModal: boolean = false;
 
   const handleDeleteModalActionClose = () => {
-    show = false;
+    showDeleteModal = false;
   };
 
   const handleDeleteProject = async () => {
@@ -26,16 +28,21 @@
   };
 </script>
 
-{#if show}
+{#if showDeleteModal}
   <DeleteActionModel {handleDeleteModalActionClose} {handleDeleteProject} />
+{/if}
+
+{#if showUpdateModal}
+  <UpdateProjectModal {_id} />
 {/if}
 
 <div class="flex">
   <button
     class="flex-1 px-4 py-3 text-white  bg-red-500"
-    on:click={() => (show = true)}>Delete</button
+    on:click={() => (showDeleteModal = true)}>Delete</button
   >
-  <button class="flex-1 px-4 py-3 text-white  bg-green-500"
-    >Update the Data</button
+  <button
+    class="flex-1 px-4 py-3 text-white  bg-green-500"
+    on:click={() => (showUpdateModal = true)}>Update the Data</button
   >
 </div>
