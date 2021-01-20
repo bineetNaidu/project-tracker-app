@@ -1,5 +1,6 @@
 <script lang="ts">
   import SliderContent from './SliderContent.svelte';
+  import SliderFooter from './SliderFooter.svelte';
   import type { Project } from './types';
 
   export let handleSliderClose: () => void;
@@ -64,9 +65,10 @@
             <!-- Replace with your content -->
             <div class="absolute inset-0 px-4 sm:px-6">
               <div
-                class="h-full border-2 p-4 border-dashed border-gray-200 flex flex-col"
+                class="h-full border-2 p-4 border-dashed border-gray-200 flex flex-col justify-between"
                 aria-hidden="true"
               >
+                <h1 class="text-lg underline">Project Summary</h1>
                 <SliderContent
                   {completed}
                   {projectName}
@@ -74,6 +76,8 @@
                   {projectGithubUrl}
                   {projectLiveUrl}
                 />
+
+                <SliderFooter {_id} />
               </div>
 
               <!-- /End replace -->
