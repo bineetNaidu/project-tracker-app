@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { createProject } from './functions/faunaDB-client';
+  import ProjectStore from './store/ProjectStore';
+
   export let handleCreateModalActionClose: () => void;
 
   let projectName = '';
@@ -6,8 +9,16 @@
   let projectGithubUrl = '';
   let projectLiveUrl = '';
 
-  const handleProjectCreate = () => {
-    console.log('Created... tada!!');
+  const handleProjectCreate = async () => {
+    const { createProject: createdProject } = await createProject(
+      projectName,
+      peojectDescription,
+      projectGithubUrl,
+      projectLiveUrl
+    );
+
+    ProjectStore.update((data) => [...data, createdProject]);
+    handleCreateModalActionClose();
   };
 </script>
 
