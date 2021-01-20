@@ -1,11 +1,13 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { updateProject } from './functions/faunaDB-client';
   import ProjectStore from './store/ProjectStore';
   import type { Project } from './types';
 
   export let _id: string;
+  export let handleUpdateModalActionClose: () => void;
 
-  $: completed = false;
+  $: completed = true;
   $: projectName = '';
   $: peojectDescription = '';
   $: projectGithubUrl = '';
@@ -22,6 +24,29 @@
 
     console.log('Mount Assigned....');
   });
+
+  const handleProjectUpdate = async () => {
+    try {
+      const { updateProject: updatedProject, errors } = await updateProject(
+        _id,
+        projectName,
+        peojectDescription,
+        completed,
+        projectGithubUrl,
+        projectLiveUrl
+      );
+
+      if (errors) throw new Error(JSON.stringify(errors[0]));
+
+      ProjectStore.update((data) => {
+        const lastStoreArr = data.filter((p) => p._id !== _id);
+        return [...lastStoreArr, updatedProject];
+      });
+      handleUpdateModalActionClose();
+    } catch (e) {
+      alert(e.message);
+    }
+  };
 </script>
 
 <div class="fixed z-10 inset-0 overflow-y-auto">
@@ -29,7 +54,10 @@
     class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
   >
     <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-      <div class="absolute inset-0 bg-gray-500 opacity-75" />
+      <div
+        class="absolute inset-0 bg-gray-500 opacity-75"
+        on:click={handleUpdateModalActionClose}
+      />
     </div>
 
     <span
@@ -43,7 +71,10 @@
       aria-labelledby="modal-headline"
     >
       <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-        <form class="flex flex-col">
+        <form
+          class="flex flex-col"
+          on:submit|preventDefault={handleProjectUpdate}
+        >
           <h1>Update Project ({projectName})</h1>
           <input
             class="my-2 py-2 px-4 text-sm"
@@ -78,9 +109,8 @@
                 type="checkbox"
                 checked={completed}
                 on:change={() => (completed = !completed)}
-                required
               />
-              <span> Completed ?* </span>
+              <span> Completed ? </span>
             </div>
 
             <button type="submit" class="px-4 py-3 text-white  bg-green-500">

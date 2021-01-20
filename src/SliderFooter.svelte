@@ -12,6 +12,9 @@
   const handleDeleteModalActionClose = () => {
     showDeleteModal = false;
   };
+  const handleUpdateModalActionClose = () => {
+    showUpdateModal = false;
+  };
 
   const handleDeleteProject = async () => {
     try {
@@ -33,7 +36,7 @@
 {/if}
 
 {#if showUpdateModal}
-  <UpdateProjectModal {_id} />
+  <UpdateProjectModal {_id} {handleUpdateModalActionClose} />
 {/if}
 
 <div class="flex">
