@@ -24,16 +24,18 @@
     <Slider {handleSliderClose} {sliderOption} />
   {/if}
 
-  {#each projects as project}
-    <ProjectTile
-      completed={project.completed}
-      projectDescription={project.peojectDescription}
-      projectGithubUrl={project.projectGithubUrl}
-      projectLiveUrl={project.projectLiveUrl}
-      projectName={project.projectName}
-      on:click={() => handleSliderOptId(project._id)}
-    />
-  {/each}
+  <div class="flex">
+    {#each projects as project}
+      <ProjectTile
+        completed={project.completed}
+        projectDescription={project.peojectDescription}
+        projectGithubUrl={project.projectGithubUrl}
+        projectLiveUrl={project.projectLiveUrl}
+        projectName={project.projectName}
+        on:click={() => handleSliderOptId(project._id)}
+      />
+    {/each}
+  </div>
 </section>
 
 <style>

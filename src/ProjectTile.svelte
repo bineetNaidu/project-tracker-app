@@ -6,7 +6,7 @@
   export let projectLiveUrl: string;
 </script>
 
-<div class="flex flex-col bg-gray-100 min-w-max rounded-xl">
+<div class="flex flex-col bg-gray-100 min-w-max rounded-xl m-4 w-2/4">
   <div class="w-full flex justify-between p-4 items-center">
     <div>
       <h1>
@@ -37,6 +37,7 @@
       >More Options</button
     >
     <button
+      disabled={!!projectLiveUrl}
       class="flex-1 py-2 border-t border-l-0 border-b-0 border-r focus:outline-none">
       <a href={projectLiveUrl} class="hover:no-underline">View Live</a>
     </button>
