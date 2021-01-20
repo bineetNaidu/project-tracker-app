@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GET_ALL_PROJECTS } from './utils/queries';
 
-const sendQuery = async (query: any, vars?: any) => {
+const sendQuery = async (query: any, variables?: any) => {
   const { data } = await axios({
     url: 'https://graphql.fauna.com/graphql',
     method: 'POST',
@@ -10,7 +10,7 @@ const sendQuery = async (query: any, vars?: any) => {
     },
     data: {
       query,
-      vars,
+      variables,
     },
   });
 
@@ -22,6 +22,25 @@ export const getAllProjects = async () => {
     const { data } = await sendQuery(GET_ALL_PROJECTS);
 
     return data.projects.data;
+  } catch (error) {
+    console.log('ERROR: ', error.message);
+  }
+};
+
+export const deleteProject = async (_id: any) => {
+  try {
+    const DELETE_PROJECT = `
+mutation {
+  deleteProject(id: ${_id}) {
+    projectName
+    _id
+  }
+}
+`;
+    // const variables = { id: JSON.parse(_id) };
+    const { data } = await sendQuery(DELETE_PROJECT);
+
+    return data;
   } catch (error) {
     console.log('ERROR: ', error.message);
   }
