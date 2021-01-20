@@ -31,3 +31,32 @@ mutation($projectName: String!, $peojectDescription: String) {
   }
 }
 `;
+
+export const UPDATE_PROJECT = (
+  _id: string,
+  projectName: string,
+  peojectDescription: string,
+  completed: boolean,
+  projectGithubUrl: string,
+  projectLiveUrl: string
+) => `
+mutation {
+  updateProject(
+    id: ${_id}
+    data: {
+      projectName: "${projectName}"
+      peojectDescription: "${peojectDescription}"
+      completed: ${completed}
+      projectGithubUrl: "${projectGithubUrl}"
+      projectLiveUrl: "${projectLiveUrl}"
+    }
+  ) {
+    projectName
+    projectGithubUrl
+    _id
+    projectLiveUrl
+    completed
+    peojectDescription
+  }
+}
+`;

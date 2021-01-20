@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_PROJECTS } from './utils/queries';
+import { GET_ALL_PROJECTS, UPDATE_PROJECT } from './utils/queries';
 
 const sendQuery = async (query: any, variables?: any) => {
   const { data } = await axios({
@@ -44,4 +44,24 @@ mutation {
   } catch (error) {
     console.log('ERROR: ', error.message);
   }
+};
+
+export const updateProject = async (
+  _id: string,
+  projectName: string,
+  peojectDescription: string,
+  completed: boolean,
+  projectGithubUrl: string,
+  projectLiveUrl: string
+) => {
+  const query = UPDATE_PROJECT(
+    _id,
+    projectName,
+    peojectDescription,
+    completed,
+    projectGithubUrl,
+    projectLiveUrl
+  );
+  const { data } = await sendQuery(query);
+  return data;
 };
