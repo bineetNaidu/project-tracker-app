@@ -13,12 +13,19 @@ query {
 }
 `;
 
-export const CREATE_PROJECT = `
-mutation($projectName: String!, $peojectDescription: String) {
+export const CreateProjectQuery = (
+  projectName: string,
+  peojectDescription: string,
+  projectGithubUrl: string,
+  projectLiveUrl: string
+) => `
+mutation {
   createProject(
     data: {
-      projectName: $projectName
-      peojectDescription: $peojectDescription
+      projectName: "${projectName}"
+      peojectDescription: "${peojectDescription}"
+      projectGithubUrl: "${projectGithubUrl}"
+      projectLiveUrl: "${projectLiveUrl}"
       completed: false
     }
   ) {

@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { GET_ALL_PROJECTS, UPDATE_PROJECT } from './utils/queries';
+import {
+  GET_ALL_PROJECTS,
+  UPDATE_PROJECT,
+  CreateProjectQuery,
+} from './utils/queries';
 
 const sendQuery = async (query: any, variables?: any) => {
   const { data } = await axios({
@@ -63,5 +67,23 @@ export const updateProject = async (
     projectLiveUrl
   );
   const { data } = await sendQuery(query);
+  return data;
+};
+
+export const createProject = async (
+  projectName: string,
+  peojectDescription: string,
+  projectGithubUrl: string,
+  projectLiveUrl: string
+) => {
+  const query = CreateProjectQuery(
+    projectName,
+    peojectDescription,
+    projectGithubUrl,
+    projectLiveUrl
+  );
+
+  const { data } = await sendQuery(query);
+
   return data;
 };
