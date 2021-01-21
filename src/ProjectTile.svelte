@@ -4,6 +4,8 @@
   export let completed: boolean;
   export let projectGithubUrl: string;
   export let projectLiveUrl: string;
+
+  console.log(!!projectLiveUrl);
 </script>
 
 <div class="flex flex-col bg-gray-100 min-w-max rounded-xl m-4 w-2/4">
@@ -37,9 +39,13 @@
       >More Options</button
     >
     <button
-      disabled={!!projectLiveUrl}
+      disabled={projectLiveUrl === '' || !projectLiveUrl}
       class="flex-1 py-2 border-t border-l-0 border-b-0 border-r focus:outline-none">
-      <a href={projectLiveUrl} class="hover:no-underline">View Live</a>
+      {#if projectLiveUrl}
+        <a href={projectLiveUrl} class="hover:no-underline">View Live</a>
+      {:else}
+        <p>No Live Url</p>
+      {/if}
     </button>
   </div>
 </div>

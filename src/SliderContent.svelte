@@ -1,7 +1,7 @@
 <script lang="ts">
   export let completed: boolean;
   export let projectName: string;
-  export let peojectDescription: string;
+  export let projectDescription: string;
   export let projectGithubUrl: string;
   export let projectLiveUrl: string;
 </script>
@@ -15,7 +15,7 @@
   <div class="p-1 rounded-md border-purple-300 border-dashed border-2 my-2">
     <h1 class="text-lg font-semibold text-purple-900">Project Description:</h1>
     <h2 class="ml-1 font-light text-purple-600">
-      {peojectDescription}
+      {projectDescription}
     </h2>
   </div>
 

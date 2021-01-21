@@ -10,9 +10,9 @@
     _id,
     completed,
     projectName,
-    peojectDescription,
     projectGithubUrl,
     projectLiveUrl,
+    projectDescription,
   } = sliderOption;
 </script>
 
@@ -72,7 +72,7 @@
                 <SliderContent
                   {completed}
                   {projectName}
-                  {peojectDescription}
+                  {projectDescription}
                   {projectGithubUrl}
                   {projectLiveUrl}
                 />

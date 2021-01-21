@@ -5,14 +5,14 @@
   export let handleCreateModalActionClose: () => void;
 
   let projectName = '';
-  let peojectDescription = '';
+  let projectDescription = '';
   let projectGithubUrl = '';
   let projectLiveUrl = '';
 
   const handleProjectCreate = async () => {
     const { createProject: createdProject } = await createProject(
       projectName,
-      peojectDescription,
+      projectDescription,
       projectGithubUrl,
       projectLiveUrl
     );
@@ -59,7 +59,7 @@
           <input
             class="my-2 py-2 px-4 text-sm"
             type="text"
-            bind:value={peojectDescription}
+            bind:value={projectDescription}
             placeholder="Project Description"
             required
           />

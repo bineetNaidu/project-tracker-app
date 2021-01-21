@@ -43,7 +43,7 @@
     {#each projects as project}
       <ProjectTile
         completed={project.completed}
-        projectDescription={project.peojectDescription}
+        projectDescription={project.projectDescription}
         projectGithubUrl={project.projectGithubUrl}
         projectLiveUrl={project.projectLiveUrl}
         projectName={project.projectName}
