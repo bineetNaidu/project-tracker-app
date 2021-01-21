@@ -1,7 +1,7 @@
 export type Project = {
   _id: string;
   projectName: string;
-  peojectDescription?: string;
+  projectDescription?: string;
   completed: boolean;
   projectGithubUrl?: string;
   projectLiveUrl?: string;

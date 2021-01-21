@@ -3,7 +3,7 @@ query {
   projects {
     data {
       _id
-      peojectDescription
+      projectDescription
       completed
       projectLiveUrl
       projectName
@@ -15,7 +15,7 @@ query {
 
 export const CreateProjectQuery = (
   projectName: string,
-  peojectDescription: string,
+  projectDescription: string,
   projectGithubUrl: string,
   projectLiveUrl: string
 ) => `
@@ -23,7 +23,7 @@ mutation {
   createProject(
     data: {
       projectName: "${projectName}"
-      peojectDescription: "${peojectDescription}"
+      projectDescription: "${projectDescription}"
       projectGithubUrl: "${projectGithubUrl}"
       projectLiveUrl: "${projectLiveUrl}"
       completed: false
@@ -34,7 +34,7 @@ mutation {
     projectGithubUrl
     projectLiveUrl
     completed
-    peojectDescription
+    projectDescription
   }
 }
 `;
@@ -42,7 +42,7 @@ mutation {
 export const UPDATE_PROJECT = (
   _id: string,
   projectName: string,
-  peojectDescription: string,
+  projectDescription: string,
   completed: boolean,
   projectGithubUrl: string,
   projectLiveUrl: string
@@ -52,7 +52,7 @@ mutation {
     id: ${_id}
     data: {
       projectName: "${projectName}"
-      peojectDescription: "${peojectDescription}"
+      projectDescription: "${projectDescription}"
       completed: ${completed}
       projectGithubUrl: "${projectGithubUrl}"
       projectLiveUrl: "${projectLiveUrl}"
@@ -63,7 +63,7 @@ mutation {
     _id
     projectLiveUrl
     completed
-    peojectDescription
+    projectDescription
   }
 }
 `;

@@ -53,7 +53,7 @@ mutation {
 export const updateProject = async (
   _id: string,
   projectName: string,
-  peojectDescription: string,
+  projectDescription: string,
   completed: boolean,
   projectGithubUrl: string,
   projectLiveUrl: string
@@ -61,7 +61,7 @@ export const updateProject = async (
   const query = UPDATE_PROJECT(
     _id,
     projectName,
-    peojectDescription,
+    projectDescription,
     completed,
     projectGithubUrl,
     projectLiveUrl
@@ -72,13 +72,13 @@ export const updateProject = async (
 
 export const createProject = async (
   projectName: string,
-  peojectDescription: string,
+  projectDescription: string,
   projectGithubUrl: string,
   projectLiveUrl: string
 ) => {
   const query = CreateProjectQuery(
     projectName,
-    peojectDescription,
+    projectDescription,
     projectGithubUrl,
     projectLiveUrl
   );

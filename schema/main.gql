@@ -1,6 +1,6 @@
 type Project {
   projectName: String!
-  peojectDescription: String
+  projectDescription: String
   completed: Boolean!
   projectGithubUrl: String
   projectLiveUrl: String
