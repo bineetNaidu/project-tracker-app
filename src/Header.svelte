@@ -15,7 +15,7 @@
   }
 
   .header__mainLink {
-    @apply font-semibold text-5xl text-purple-700 hover:underline;
+    @apply font-semibold md:text-5xl text-3xl text-purple-700 hover:underline;
     cursor: pointer;
   }
 

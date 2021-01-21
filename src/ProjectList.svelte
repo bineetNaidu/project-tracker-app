@@ -23,10 +23,10 @@
 </script>
 
 <section>
-  <div class="flex justify-between">
-    <h1>Your Projects</h1>
+  <div class="flex justify-between mt-4 align-middle px-6">
+    <h1 class="text-2xl bg-blue-200 rounded p-2">Your Projects</h1>
 
-    <button class="px-3 py-4" on:click={() => (showCreateModal = true)}
+    <button class="px-3 py-2" on:click={() => (showCreateModal = true)}
       >Create a new Project?</button
     >
   </div>
@@ -39,7 +39,7 @@
     <Slider {handleSliderClose} {sliderOption} />
   {/if}
 
-  <div class="flex">
+  <div class="flex md:flex-row items-center flex-col mx-auto">
     {#each projects as project}
       <ProjectTile
         completed={project.completed}

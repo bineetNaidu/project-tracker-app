@@ -17,7 +17,7 @@
   });
 </script>
 
-<main class="container mx-auto">
+<main class="container mx-auto overflow-x-hidden">
   <Header />
 
   {#if !loading}

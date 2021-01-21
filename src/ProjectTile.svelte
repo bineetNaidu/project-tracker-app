@@ -8,7 +8,7 @@
   console.log(!!projectLiveUrl);
 </script>
 
-<div class="flex flex-col bg-gray-100 min-w-max rounded-xl m-4 w-2/4">
+<div class="flex flex-1 flex-col bg-gray-100 min-w-max rounded-xl m-4 w-full">
   <div class="w-full flex justify-between p-4 items-center">
     <div>
       <h1>
