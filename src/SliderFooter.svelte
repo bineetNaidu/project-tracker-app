@@ -4,6 +4,7 @@
   import ProjectStore from './store/ProjectStore';
   import UpdateProjectModal from './UpdateProjectModal.svelte';
 
+  export let handleSliderClose: () => void;
   export let _id: string;
 
   let showDeleteModal: boolean = false;
@@ -24,6 +25,7 @@
         (p) => p._id !== deletedProject._id
       );
       ProjectStore.update(() => updatedData);
+      handleSliderClose();
       handleDeleteModalActionClose();
     } catch (e) {
       alert(e.message);
@@ -36,7 +38,11 @@
 {/if}
 
 {#if showUpdateModal}
-  <UpdateProjectModal {_id} {handleUpdateModalActionClose} />
+  <UpdateProjectModal
+    {_id}
+    {handleUpdateModalActionClose}
+    {handleSliderClose}
+  />
 {/if}
 
 <div class="flex">

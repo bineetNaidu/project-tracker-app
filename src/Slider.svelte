@@ -77,7 +77,7 @@
                   {projectLiveUrl}
                 />
 
-                <SliderFooter {_id} />
+                <SliderFooter {_id} {handleSliderClose} />
               </div>
 
               <!-- /End replace -->

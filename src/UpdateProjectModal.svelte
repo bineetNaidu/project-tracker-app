@@ -4,12 +4,13 @@
   import ProjectStore from './store/ProjectStore';
   import type { Project } from './types';
 
+  export let handleSliderClose: () => void;
   export let _id: string;
   export let handleUpdateModalActionClose: () => void;
 
   $: completed = true;
   $: projectName = '';
-  $: peojectDescription = '';
+  $: projectDescription = '';
   $: projectGithubUrl = '';
   $: projectLiveUrl = '';
 
@@ -18,7 +19,7 @@
 
     completed = project.completed;
     projectName = project.projectName;
-    peojectDescription = project.peojectDescription;
+    projectDescription = project.projectDescription;
     projectGithubUrl = project.projectGithubUrl;
     projectLiveUrl = project.projectLiveUrl;
 
@@ -30,7 +31,7 @@
       const { updateProject: updatedProject, errors } = await updateProject(
         _id,
         projectName,
-        peojectDescription,
+        projectDescription,
         completed,
         projectGithubUrl,
         projectLiveUrl
@@ -42,6 +43,7 @@
         const lastStoreArr = data.filter((p) => p._id !== _id);
         return [...lastStoreArr, updatedProject];
       });
+      handleSliderClose();
       handleUpdateModalActionClose();
     } catch (e) {
       alert(e.message);
@@ -86,7 +88,7 @@
           <input
             class="my-2 py-2 px-4 text-sm"
             type="text"
-            bind:value={peojectDescription}
+            bind:value={projectDescription}
             placeholder="Project Description"
             required
           />
